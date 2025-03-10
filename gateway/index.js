@@ -15,7 +15,7 @@ app.use('/home', createProxyMiddleware({
 
 // Proxy for the gosipo app
 app.use('/gosipo', createProxyMiddleware({
-  target: `http://${HOST}:${process.env.GOSIPO_SERVICE_PORT || 4002}`,
+  target: `http://${HOST}:${process.env.GOSIPO_SERVICE_PORT || 4002}/gosipo`,
   changeOrigin: true,
 }));
 
