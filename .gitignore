@@ -5,9 +5,17 @@
 **/*.log*
 
 # Build
-**/node_modules
 **/dist
 **/*.local
+**/tmp
+
+# Node
+**/node_modules
+
+# Angular
+**/.angular
 
 # IDE
 .vscode/*
+**/.vscode/
+**/.idea/
