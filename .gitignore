@@ -1,0 +1,13 @@
+# Logs
+
+**/logs
+**/*.log
+**/*.log*
+
+# Build
+**/node_modules
+**/dist
+**/*.local
+
+# IDE
+.vscode/*
