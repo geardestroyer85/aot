@@ -1,6 +1,12 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { AppModule } from './app/app.module';
+
+// import { test } from "shared";
+
+// console.log("Is shared working in Client: ", test)
+
+platformBrowserDynamic().bootstrapModule(AppModule, {
+  ngZoneEventCoalescing: true
+})
+  .catch(err => console.error(err));
