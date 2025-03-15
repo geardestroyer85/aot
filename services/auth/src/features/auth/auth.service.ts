@@ -57,4 +57,13 @@ export class AuthService {
     const result = await this.loginAfterRegistration(user);
     return result
   }
+
+  async getUserInfo(userId: string): Promise<auth.UserInfo> {
+    const user = await this.userService.findOneById(userId);
+    return {
+      id: user.id,
+      username: user.name,
+      role: user.role
+    }
+  }
 }

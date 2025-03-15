@@ -1,0 +1,15 @@
+.profiles-container {
+  padding: 20px;
+  h1 {
+    margin-bottom: 20px;
+  }
+  .button-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  table {
+    width: 100%;
+  }
+}

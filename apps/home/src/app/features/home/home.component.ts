@@ -28,4 +28,8 @@ export class HomeComponent {
     this.router.navigate(['/login'])
   }
 
+  gosipo() {
+    window.location.href = '/gosipo'
+  }
+
 }

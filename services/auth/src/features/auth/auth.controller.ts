@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 import { LoginDto } from './dto/login.dto';
-import { Public } from './auth.guard';
+import { Public, User } from './auth.guard';
 import { RegisterDto } from './dto/register.dto';
 import { RegisterByAdminDto } from './dto/register-by-admin.dto';
 import { auth } from 'shared';
+import { TokenPayload } from './auth.type';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -71,5 +72,16 @@ export class AuthController {
       dto.role
     );
     return result;
+  }
+
+  @User()
+  @Get('me')
+  @ApiOperation({ summary: 'Get user information from token' })
+  @ApiResponse({ status: 200, description: 'User information retrieved successfully' })
+  @ApiResponse({ status: 401, description: 'Unauthorized - No access token' })
+  @ApiResponse({ status: 403, description: 'Forbidden - Not enough permissions' })
+  async getMe(@Req() request: { user: TokenPayload }): Promise<auth.UserInfo> {
+    const userId = request.user.sub;
+    return await this.authService.getUserInfo(userId);
   }
 }

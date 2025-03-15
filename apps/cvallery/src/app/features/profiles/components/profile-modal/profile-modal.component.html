@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>
+  {{ data.mode === "create" ? "Create Profile" : "Edit Profile" }}
+</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="button-group">
+  <app-secondary-button (click)="onCancel()"> Cancel </app-secondary-button>
+  <app-handler-button color="primary" (click)="onSave()" [disabled]="!name">
+    Save
+  </app-handler-button>
+</mat-dialog-actions>

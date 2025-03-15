@@ -40,6 +40,36 @@ export class UsersService {
     }
   }
 
+  async findOneById(userId: string) {
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    if (!userId) {
+      throw new BadRequestException('Invalid user ID format');
+    }
+    try {
+      const user = await this.userRepository.findOne({
+        where: { id: userId },
+      });
+      if (!user) {
+        throw new NotFoundException(`User with ID ${userId} not found`);
+      }
+      return user;
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      if (error instanceof Error) {
+        throw new Error(
+          `Failed to find user with ID ${userId}: ${error.message}`,
+        );
+      }
+      throw new Error(
+        `Failed to find user with ID ${userId}: Unknown error`,
+      );
+    }
+  }  
+
   async create(data: { name: string; email: string; password: string; role: consts.enums.UserRole }) {
     try {
       const user = this.userRepository.create(data);

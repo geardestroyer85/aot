@@ -5,10 +5,19 @@
   "description": "All of Team: the all-in-one package for team management",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:shared": "pnpm --filter shared dev",
+    "dev:gateway": "pnpm --filter gateway dev",
+    "dev:home": "pnpm --filter home dev",
+    "dev:auth": "pnpm --filter auth dev",
+    "dev:gosipo-app": "pnpm --filter gosipo-app dev",
+    "dev": "concurrently --names \"SHARED,GATEWAY,HOME,AUTH,GOSIPO_APP\" \"pnpm dev:shared\" \"pnpm dev:gateway\" \"pnpm dev:home\" \"pnpm dev:auth\" \"pnpm dev:gosipo-app\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.5.2"
+  "packageManager": "pnpm@10.5.2",
+  "dependencies": {
+    "aot": "file:",
+    "concurrently": "^9.1.2"
+  }
 }

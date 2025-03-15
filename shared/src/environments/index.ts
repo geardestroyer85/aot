@@ -15,6 +15,7 @@ export const env = {
   AUTH_SERVICE_PORT: Number(process.env.AUTH_SERVICE_PORT ?? 5001),
   GOSIPO_SERVICE_PORT: Number(process.env.GOSIPO_SERVICE_PORT ?? 5002),
   CVALLERY_SERVICE_PORT: Number(process.env.CVALLERY_SERVICE_PORT ?? 5003),
+  DATABASE_URL: process.env.DATABASE_URL ?? '',
+  JWT_SECRET: process.env.JWT_SECRET ?? '',
+  ENCRYPTION_KEY: process.env.ENCRYPTION_KEY ?? 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3',
 } as const;
-
-console.log('Shared env loaded:', env.HOST);
